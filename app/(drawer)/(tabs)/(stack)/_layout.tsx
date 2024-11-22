@@ -23,7 +23,7 @@ const StackLayaout = () => {
                     backgroundColor: 'white'
                 },
                 headerLeft: ({ tintColor, canGoBack }) => (
-                    <FontAwesome name={canGoBack ? 'bars' : 'arrow-left'} size={20} className='mr-5' color={tintColor} onPress={() => onHeaderLeftClick(canGoBack)} />
+                    <FontAwesome name={canGoBack ? 'arrow-left' : 'bars'} size={20} className='mr-5' color={tintColor} onPress={() => onHeaderLeftClick(canGoBack)} />
                 )
             }}
         >
