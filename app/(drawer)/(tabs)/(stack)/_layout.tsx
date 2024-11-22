@@ -1,13 +1,29 @@
-import { Stack } from 'expo-router'
+import { FontAwesome } from '@expo/vector-icons'
+import { DrawerActions, StackActions } from '@react-navigation/native'
+import { Stack, useNavigation } from 'expo-router'
 
 const StackLayaout = () => {
+
+    const navigation = useNavigation()
+
+    const onHeaderLeftClick = (canGoBack:boolean=true) => {
+        if(canGoBack){
+            navigation.dispatch(StackActions.pop())
+            return
+        }
+        navigation.dispatch(DrawerActions.toggleDrawer)
+      }
+    
     return (
         <Stack
             screenOptions={{
                 headerShadowVisible: false,
                 contentStyle: {
                     backgroundColor: 'white'
-                }
+                },
+                headerLeft: ({ tintColor, canGoBack }) => (
+                    <FontAwesome name={canGoBack ? 'list' : 'arrow-left'} size={20} className='mr-5' color={tintColor} onPress={() => onHeaderLeftClick(canGoBack)} />
+                )
             }}
         >
             <Stack.Screen 
