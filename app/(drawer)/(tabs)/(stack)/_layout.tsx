@@ -1,6 +1,6 @@
 import { FontAwesome } from '@expo/vector-icons'
 import { DrawerActions, StackActions } from '@react-navigation/native'
-import { Stack, useNavigation } from 'expo-router'
+import { router, Stack, useNavigation } from 'expo-router'
 
 const StackLayaout = () => {
 
@@ -8,7 +8,8 @@ const StackLayaout = () => {
 
     const onHeaderLeftClick = (canGoBack:boolean=true) => {
         if(canGoBack){
-            navigation.dispatch(StackActions.pop())
+            //navigation.dispatch(StackActions.pop())
+            router.back()
             return
         }
         navigation.dispatch(DrawerActions.toggleDrawer)
@@ -22,7 +23,7 @@ const StackLayaout = () => {
                     backgroundColor: 'white'
                 },
                 headerLeft: ({ tintColor, canGoBack }) => (
-                    <FontAwesome name={canGoBack ? 'list' : 'arrow-left'} size={20} className='mr-5' color={tintColor} onPress={() => onHeaderLeftClick(canGoBack)} />
+                    <FontAwesome name={canGoBack ? 'bars' : 'arrow-left'} size={20} className='mr-5' color={tintColor} onPress={() => onHeaderLeftClick(canGoBack)} />
                 )
             }}
         >
